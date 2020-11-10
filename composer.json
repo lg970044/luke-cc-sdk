@@ -1,0 +1,19 @@
+{
+    "name": "luke/cc-sdk",
+    "description": "luke group crm center sdk for php",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "liux",
+            "email": "liux@luke.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "hanson/foundation-sdk": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {"Luke\\Cc\\": "src"}
+    }
+}
