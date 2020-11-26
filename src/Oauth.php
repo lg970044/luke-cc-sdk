@@ -60,4 +60,19 @@ class Oauth extends Api
         return $this->request('POST', '/auth/token', $options);
     }
     
+    /**
+     * 销毁用户token
+     * @param string $accessToken
+     * @return array
+     */
+    public function destroyToken($accessToken)
+    {
+        $options = [
+            'headers'   => [
+                'Authorization' => $accessToken
+            ]
+        ];
+        return $this->request('POST', '/user/logout', $options);
+    }
+    
 }

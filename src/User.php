@@ -35,19 +35,12 @@ class User extends Api
      * @param string $mobile
      * @return array
      */
-    public function getInfo($accessToken, $mobile)
+    public function getInfo($accessToken, $mobile = '')
     {
-        $options = [
-            'headers'   => [
-                'Authorization' => $accessToken
-            ],
-            'form_params'  => [
-                'phone'         => $mobile
-            ]
-        ];
-        return $this->request('GET', '/user/getinfo', $options);
+        $options = empty($mobile) ? ['headers' => ['Authorization' => $accessToken]] : ['form_params' => ['phone' => $mobile]];
+        return $this->request('POST', '/user/getinfo', $options);
     }
-
+    
     /**
      * 忘记密码(验证手机验证码)
      * @param string $mobile
@@ -66,6 +59,5 @@ class User extends Api
         ];
         return $this->request('POST', '/user/resetByCode', $options);
     }
-    
     
 }
