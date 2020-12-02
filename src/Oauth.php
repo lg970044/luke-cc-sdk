@@ -43,6 +43,23 @@ class Oauth extends Api
     }
     
     /**
+     * 获取用户token(手机号模式)
+     * @param string $mobile
+     * @param string $code
+     * @return array
+     */
+    public function getTokenByMobile($mobile)
+    {
+        $options = [
+            'form_params'  => [
+                'grantType'     => 'phone',
+                'phone'         => $mobile
+            ]
+        ];
+        return $this->request('POST', '/auth/token', $options);
+    }
+    
+    /**
      * 刷新用户token
      * @param string $mobile
      * @param string $refreshToken
