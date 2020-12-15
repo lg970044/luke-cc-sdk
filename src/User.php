@@ -60,4 +60,23 @@ class User extends Api
         return $this->request('POST', '/user/resetByCode', $options);
     }
     
+    /**
+     * 提交身份证图片
+     * @param string $accessToken
+     * @param string $front
+     * @param string $back
+     * @return array
+     */
+    public function uploadID($accessToken, $front, $back)
+    {
+        $options = [
+            'headers'       => ['Authorization' => $accessToken],
+            'form_params'   => [
+                'base641'       => $front,
+                'base642'       => $back
+            ]
+        ];
+        return $this->request('POST', '/user/ident2', $options);
+    }
+    
 }
