@@ -79,4 +79,34 @@ class User extends Api
         return $this->request('POST', '/user/ident2', $options);
     }
     
+    /**
+     * 提交表单请求
+     * @param array $data
+     * @param string $accessToken
+     * @return array
+     */
+    public function requestByForm($url, $data, $accessToken = null)
+    {
+        $options = [
+            'headers'       => $accessToken ? ['Authorization' => $accessToken] : [],
+            'form_params'   => $data
+        ];
+        return $this->request('POST', $url, $options);
+    }
+    
+    /**
+     * 提交查询请求
+     * @param array $data
+     * @param string $accessToken
+     * @return array
+     */
+    public function requestByQuery($url, $data, $accessToken = null)
+    {
+        $options = [
+            'headers'       => $accessToken ? ['Authorization' => $accessToken] : [],
+            'query'         => $data
+        ];
+        return $this->request('GET', $url, $options);
+    }
+    
 }
